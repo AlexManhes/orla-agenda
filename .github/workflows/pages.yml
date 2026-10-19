@@ -1,0 +1,38 @@
+name: Publicar Orla no GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: github-pages
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Obter código
+        uses: actions/checkout@v6
+      - name: Verificar JavaScript
+        run: node --check dist/js/app.js
+      - name: Verificar datas e conflitos
+        run: node tests/model.cjs
+      - name: Configurar Pages
+        uses: actions/configure-pages@v5
+      - name: Preparar site
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: dist
+      - name: Publicar
+        id: deployment
+        uses: actions/deploy-pages@v4

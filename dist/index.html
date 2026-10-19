@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#244e42">
+  <meta name="description" content="Orla: organize a agenda dos profissionais, serviços e horários disponíveis em um só lugar.">
+  <title>Orla — Sistema de agendamento</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;450;500;550;600;650;700&family=Manrope:wght@400;500;600;650;700;750;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <script defer src="js/model.js"></script>
+  <script defer src="js/app.js"></script>
+</head>
+<body>
+  <aside id="sidebar" class="app-sidebar">
+    <a class="brand" href="#agenda" data-view="agenda" aria-label="Orla, início"><span class="brand-mark">o<span>·</span></span><span class="brand-name">orla<span>AGENDA INTELIGENTE</span></span></a>
+    <div class="workspace"><span class="user-avatar">EO</span><div><strong>Estúdio Orla</strong><small>Seu espaço de trabalho</small></div><span>⌄</span></div>
+    <div class="nav-section-label">ORGANIZAÇÃO</div>
+    <nav id="navigation" class="sidebar-nav" aria-label="Menu principal"></nav>
+    <div class="sidebar-bottom"><div class="sidebar-tip"><span class="tip-symbol">✧</span><strong>Tempo para o que importa.</strong><p>Uma agenda organizada abre espaço para grandes encontros.</p></div><div class="sidebar-user"><span class="user-avatar">AS</span><div class="user-info"><strong>Alex Sander</strong><small>Administrador · demonstração</small></div></div></div>
+  </aside>
+  <div class="app-shell">
+    <header class="topbar"><div class="breadcrumb"><button id="mobile-menu" class="button ghost mobile-menu" aria-label="Abrir menu" aria-expanded="false" aria-controls="sidebar">☰</button><span>Meu estúdio</span><span aria-hidden="true">/</span><b id="breadcrumb">Agenda</b></div><div class="topbar-actions"><span class="saved-label"><i></i>Salvo neste navegador</span><button id="export-data" class="button ghost small" title="Exportar cópia em JSON" aria-label="Exportar dados"></button><span class="user-avatar">AS</span></div></header>
+    <main id="content" class="page-content"></main>
+  </div>
+  <dialog id="form-dialog" aria-labelledby="form-title"><form id="entity-form"><div class="modal-header"><div><div class="eyebrow" id="form-eyebrow">UM NOVO ENCONTRO</div><h2 id="form-title" class="modal-title">Novo agendamento</h2></div><button type="button" id="close-form" class="button ghost" aria-label="Fechar formulário">×</button></div><div id="form-fields" class="modal-body"></div><p id="form-error" class="form-error" role="alert" hidden></p><div class="modal-footer"><button type="button" id="cancel-form" class="button secondary">Voltar</button><button type="submit" id="save-form" class="button primary">Salvar agendamento</button></div></form></dialog>
+  <dialog id="detail-dialog" aria-labelledby="detail-title"><div class="modal-header"><div><div class="eyebrow">DETALHES DO AGENDAMENTO</div><h2 id="detail-title" class="modal-title"></h2></div><button id="close-detail" class="button ghost" aria-label="Fechar detalhes">×</button></div><div id="detail-body" class="modal-body"></div></dialog>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+</body>
+</html>
